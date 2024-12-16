@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.text.Normalizer.Form
 
-data class MhsUIState(
+data class MhsUiState(
     val mahasiswaEvent: MahasiswaEvent = MahasiswaEvent(),
     val isEntryValid: FormErrorState = FormErrorState(),
     val snackBarMessage: String? = null
@@ -25,7 +25,7 @@ class  UpdateMhsViewModel(
     savedStateHandle: SavedStateHandle,
     private val repositoryMhs: RepositoryMhs
 ): ViewModel(){
-    var updateUIState by mutableStateOf(MhsUIState())
+    var updateUIState by mutableStateOf(MhsUiState())
         private set
     private val _nim: String = checkNotNull(savedStateHandle[DestinasiUpdate.NIM])
 
@@ -88,6 +88,6 @@ class  UpdateMhsViewModel(
     }
 }
 
-fun Mahasiswa.toUIStateMhs() : MhsUIState = MhsUIState(
+fun Mahasiswa.toUIStateMhs() : MhsUiState = MhsUiState(
     mahasiswaEvent = this.toDetailUiEvent(),
 )

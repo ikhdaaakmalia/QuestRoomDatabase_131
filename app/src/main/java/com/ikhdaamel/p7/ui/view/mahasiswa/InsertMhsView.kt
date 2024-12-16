@@ -29,7 +29,7 @@ import com.ikhdaamel.p7.ui.customwidget.TopAppBar
 import com.ikhdaamel.p7.ui.viewmodel.FormErrorState
 import com.ikhdaamel.p7.ui.viewmodel.MahasiswaEvent
 import com.ikhdaamel.p7.ui.viewmodel.MahasiswaViewModel
-import com.ikhdaamel.p7.ui.viewmodel.MhsUIState
+import com.ikhdaamel.p7.ui.viewmodel.MhsUiState
 import com.ikhdaamel.p7.ui.viewmodel.PenyediaViewModel
 import kotlinx.coroutines.launch
 
@@ -43,11 +43,10 @@ fun InsertMhsView(
     val uiState = viewModel.uiState                                 //ambil ui state dari variabel
     val snackbarHostState = remember {SnackbarHostState()}         //snackbar state
     val coroutineScope = rememberCoroutineScope()
-
-    LaunchedEffect(uiState.snackBarMessage) {                       //observasi perubahan SnackBarMessage
-        uiState.snackBarMessage?.let {message ->
+    LaunchedEffect(uiState.snackBarMessage) {
+        uiState.snackBarMessage?.let { message: String ->
             coroutineScope.launch {
-                snackbarHostState.showSnackbar(message)             //tampil snackbar
+                snackbarHostState.showSnackbar(message)
                 viewModel.resetSnackBarMessage()
             }
         }
@@ -85,7 +84,7 @@ fun InsertMhsView(
 fun InsertBodyMhs(
     modifier: Modifier = Modifier,
     onValueChange: (MahasiswaEvent) -> Unit,
-    uiState: MhsUIState,
+    uiState: MhsUiState,
     onClick: () -> Unit
 ){
     Column (

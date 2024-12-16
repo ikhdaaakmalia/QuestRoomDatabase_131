@@ -12,7 +12,7 @@ import com.ikhdaamel.p7.repository.RepositoryMhs
 import kotlinx.coroutines.launch
 
 class MahasiswaViewModel(private val repositoryMhs: RepositoryMhs): ViewModel() {
-    var uiState by mutableStateOf(MhsUIState())
+    var uiState by mutableStateOf(MhsUiState())
 
     //memperbarui state berdasarkan input pengguna
     fun updateState(mahasiswaEvent: MahasiswaEvent) {
